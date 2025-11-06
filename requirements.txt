@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+SQLAlchemy
+psycopg2-binary
+passlib[argon2]
+python-jose
+pytest
+requests
+pytest-asyncio
+python-dotenv
+jsonschema
+alembic
+pydantic-settings
+pydantic[email]
+httpx
+pytest-cov
+pytest-html
