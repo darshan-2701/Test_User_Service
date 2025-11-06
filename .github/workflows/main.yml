@@ -56,3 +56,28 @@ jobs:
         with:
           name: pytest-report
           path: report.html
+
+      - name: Send report via email
+        uses: dawidd6/action-send-mail@v4
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USER }}
+          password: ${{ secrets.EMAIL_PASS }}
+          subject: "✅ CI Pytest Report - ${{ github.repository }}"
+          to: darshangowda9484@gmail.com
+          from: CI Bot <${{ secrets.EMAIL_USER }}>
+          attachments: report.html
+          body: |
+            Hello,
+
+            Attached the latest pytest report from GitHub Actions pipeline.
+
+            ✅ Repo: ${{ github.repository }}
+            👤 Triggered by: ${{ github.actor }}
+            🔀 Commit: ${{ github.sha }}
+
+            Regards,
+            GitHub Actions Bot
+          
+          
